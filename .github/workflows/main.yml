@@ -26,9 +26,9 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: arn:aws:iam::899924810651:role/github-oidc
+        # role-to-assume: arn:aws:iam::899924810651:role/github-oidc
         role-duration-seconds: 900
-        aws-region: eu-west-1
+        aws-region: ca-central-1
     - name: Test AWS Creds
       run: aws sts get-caller-identity
 
@@ -42,7 +42,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: gitops-argocd
+        ECR_REPOSITORY: eks-test
 
       run: |
         # Build a docker container and push it to ECR
