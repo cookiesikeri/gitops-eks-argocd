@@ -12,7 +12,7 @@ on:
   push:
     branches: [ main ]
 env:
-  ECR_REPOSITORY: gitops-argocd
+  ECR_REPOSITORY: eks-test
 
 jobs:
   build:
@@ -67,10 +67,7 @@ jobs:
         output: 'trivy-image-results'
         severity: 'CRITICAL,HIGH'
 
-
-  
-        
-        
+ 
     - name: Push image to Amazon ECR
       id: push-image
       env:
